@@ -24,11 +24,17 @@ def porno(message):
 
 @bot.message_handler(commands=['love'])
 def love(message):
+   bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
+   love = 1
+   while love < 50:
+    bot.send_message(message.chat.id, '❤️')
+    love = love+1
    bot.send_message(message.chat.id, 'Секретая команда для моей любимой светы❤️')
 
-@bot.message_handler(commands=['weather'])
+@bot.message_handler(commands=['w'])
 #@bot.message_handler(content_types=['text'])
 def weather(message):
+    #bot.send_message(message.chat.id, 'Введите город')
     city = extract_arg(message.text.strip().lower())
     #city = message.text.strip().lower()
     bot.send_message(message.chat.id, 'Проверка...')
@@ -46,8 +52,6 @@ def weather(message):
      #image = 'sun.png' if temp > 5.0 else 'sunny.png'
      #file = open('./picters/' + image, 'rb')
      #bot.send_photo(message.chat.id, file)
-    else:    bot.reply_to(message, f'Город указан не верно')
-
-
+    else:    bot.reply_to(message, f'Город указан не верно, не забудьте написать команду с городом')
 
 bot.polling(non_stop=True)
