@@ -25,10 +25,8 @@ def porno(message):
 @bot.message_handler(commands=['love'])
 def love(message):
    bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
-   love = 1
-   while love < 50:
+   for i in range(50):
     bot.send_message(message.chat.id, '❤️')
-    love = love+1
    bot.send_message(message.chat.id, 'Секретая команда для моей любимой светы❤️')
 
 @bot.message_handler(commands=['w'])
@@ -41,17 +39,18 @@ def weather(message):
     city1 = ''.join(city)
     res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city1}&appid={API}&units=metric')
     print(city1)
-    if res.status_code == 200:
-     data = json.loads(res.text)
-     temp = data["main"]["temp"]
-     wind = data["wind"]["speed"]
-     windstorona = data["wind"]["deg"]
-     tempmin = data["main"]["temp_min"]
-     tempmax = data["main"]["temp_max"]
-     bot.reply_to(message, f'Cейчас температура: {temp}' + "\n" + f'Минимальная температура: {tempmin}' + "\n" + f'Максимальная температура: {tempmax}' + "\n" + f'Скорость ветра: {wind}м\с' + "\n" + f'Направление ветра: {windstorona}')
-     #image = 'sun.png' if temp > 5.0 else 'sunny.png'
-     #file = open('./picters/' + image, 'rb')
-     #bot.send_photo(message.chat.id, file)
-    else:    bot.reply_to(message, f'Город указан не верно, не забудьте написать команду с городом')
+    if res.status_code != 200:
+        bot.reply_to(message, f'Город указан не верно, не забудьте написать команду с городом')
+        return
+    data = json.loads(res.text)
+    temp = data["main"]["temp"]
+    wind = data["wind"]["speed"]
+    wind_degree = data["wind"]["deg"]
+    tempmin = data["main"]["temp_min"]
+    tempmax = data["main"]["temp_max"]
+    bot.reply_to(message, f'Cейчас температура: {temp}' + "\n" + f'Минимальная температура: {tempmin}' + "\n" + f'Максимальная температура: {tempmax}' + "\n" + f'Скорость ветра: {wind}м\с' + "\n" + f'Направление ветра: {wind_degree}')
+    #image = 'sun.png' if temp > 5.0 else 'sunny.png'
+    #file = open('./picters/' + image, 'rb')
+    #bot.send_photo(message.chat.id, file)    
 
 bot.polling(non_stop=True)
