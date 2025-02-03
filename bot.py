@@ -20,7 +20,15 @@ def start(message):
 
 @bot.message_handler(commands=['porno'])
 def porno(message):
-   bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
+   bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
+
+@bot.message_handler(commands=['love'])
+def love(message):
+   bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
+   for i in range(50):
+    bot.send_message(message.chat.id, '❤️')
+   bot.send_message(message.chat.id, 'Секретая команда для моей любимой светы❤️')
+
 
 @bot.message_handler(commands=['w'])
 #@bot.message_handler(content_types=['text'])
