@@ -1,13 +1,11 @@
 import telebot
 import requests
 import json
-import os
-from dotenv import load_dotenv
+import re
+ 
+token = '7107794543:AAGoqTAZZcT1ZuMdTMk6gw-8J5-7WRSZ7uU'
 
-load_dotenv()
-
-token = os.getenv("token")
-API = os.getenv("API")
+API = '8a754a26e67c3b0effe5f7e22853f89c'
 
 bot = telebot.TeleBot(token)
 
@@ -22,36 +20,31 @@ def start(message):
 def porno(message):
    bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
 
-@bot.message_handler(commands=['love'])
+@bot.message_handler(commands=['люблю'])
 def love(message):
    bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
-   for i in range(50):
+   for i in range(10):
     bot.send_message(message.chat.id, '❤️')
-   bot.send_message(message.chat.id, 'Секретая команда для моей любимой Cветы❤️')
+
+   bot.send_message(message.chat.id, 'Секретая команда для моей любимой Светы❤️')
 
 
 @bot.message_handler(commands=['w'])
-#@bot.message_handler(content_types=['text'])
 def weather(message):
-    #bot.send_message(message.chat.id, 'Введите город')
-    city = extract_arg(message.text.strip().lower())
-    #city = message.text.strip().lower()
-    bot.send_message(message.chat.id, 'Проверка...')
-    city1 = ''.join(city)
-    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city1}&appid={API}&units=metric')
-    print(city1)
-    if res.status_code != 200:
-        bot.reply_to(message, f'Город указан не верно, не забудьте написать команду с городом')
-        return
-    data = json.loads(res.text)
-    temp = data["main"]["temp"]
-    wind = data["wind"]["speed"]
-    wind_degree = data["wind"]["deg"]
-    tempmin = data["main"]["temp_min"]
-    tempmax = data["main"]["temp_max"]
-    bot.reply_to(message, f'Cейчас температура: {temp}' + "\n" + f'Минимальная температура: {tempmin}' + "\n" + f'Максимальная температура: {tempmax}' + "\n" + f'Скорость ветра: {wind}м\с' + "\n" + f'Направление ветра: {wind_degree}')
-    #image = 'sun.png' if temp > 5.0 else 'sunny.png'
-    #file = open('./picters/' + image, 'rb')
-    #bot.send_photo(message.chat.id, file)    
+    city = message.text.strip().lower()
+    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')
+    print(city)
+    if res.status_code == 200:
+     data = json.loads(res.text)
+     temp = data["main"]["temp"]
+     wind = data["wind"]["speed"]
+     windstorona = data["wind"]["deg"]
+     tempmin = data["main"]["temp_min"]
+     tempmax = data["main"]["temp_max"]
+     bot.reply_to(message, f'Cейчас температура: {temp}' + "\n" + f'Минимальная температура: {tempmin}' + "\n" + f'Максимальная температура: {tempmax}' + "\n" + f'Скорость ветра: {wind}м\с' + "\n" + f'Направление ветра: {windstorona}')
+     #image = 'sun.png' if temp > 5.0 else 'sunny.png'
+     #file = open('./picters/' + image, 'rb')
+     #bot.send_photo(message.chat.id, file)
+    else:    bot.reply_to(message, f'Город указан не верно, не забудьте написать команду с городом')
 
 bot.polling(non_stop=True)
