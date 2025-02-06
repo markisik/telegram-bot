@@ -14,14 +14,17 @@ def extract_arg(arg):
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    print(message)
     bot.send_message(message.chat.id, 'Привет, рад тебя видеть!')
 
 @bot.message_handler(commands=['porno'])
 def porno(message):
+   print(message)
    bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
 
 @bot.message_handler(commands=['люблю'])
 def love(message):
+   print(message)
    bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
    for i in range(10):
     bot.send_message(message.chat.id, '❤️')
