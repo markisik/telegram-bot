@@ -24,6 +24,7 @@ def start(message):
 @bot.message_handler(commands=['porno'])
 def porno(message):
    bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
+   print(message)
 
 @bot.message_handler(commands=['люблю'])
 def love(message):
