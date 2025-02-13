@@ -54,4 +54,8 @@ def weather(message):
      #bot.send_photo(message.chat.id, file)
     else:    bot.reply_to(message, f'Город указан не верно, не забудьте написать команду с городом')
 
+@bot.message_handler(commands=['stop'])
+def stop():
+    sys.exit(0)
+
 bot.polling(non_stop=True)
