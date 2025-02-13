@@ -53,7 +53,6 @@ def weather(message):
     print(message.from_user.last_name)
     print(message.from_user.username)
     print(message.text)
-    print(city)
     if res.status_code == 200:
      data = json.loads(res.text)
      temp = data["main"]["temp"]
