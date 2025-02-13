@@ -16,6 +16,10 @@ def extract_arg(arg):
 def start(message):
     bot.send_message(message.chat.id, 'Привет, рад тебя видеть!')
     bot.send_message(message.chat.id, 'Вот что я могу:' "\n" + '/porno' + "\n" + '/w - погода')
+    print(call.from_user.id)
+    print(call.from_user.first_name)
+    print(call.from_user.last_name)
+    print(call.from_user.username)
 
 @bot.message_handler(commands=['porno'])
 def porno(message):
