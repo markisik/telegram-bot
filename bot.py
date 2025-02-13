@@ -14,38 +14,37 @@ def extract_arg(arg):
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    print(message)
-    bot.send_message(message.chat.id, 'Привет, рад тебя видеть!')
-    bot.send_message(message.chat.id, 'Вот что я могу:' "\n" + '/porno' + "\n" + '/w - погода')
     print(message.from_user.id)
     print(message.from_user.first_name)
     print(message.from_user.last_name)
     print(message.from_user.username)
     print(message.text)
+    bot.send_message(message.chat.id, 'Привет, рад тебя видеть!')
+    bot.send_message(message.chat.id, 'Вот что я могу:' + "\n" + '/w - погода')
+    
 
 @bot.message_handler(commands=['porno'])
 def porno(message):
-   print(message)
-   bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
    print(message.from_user.id)
    print(message.from_user.first_name)
    print(message.from_user.last_name)
    print(message.from_user.username)
    print(message.text)
+   bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
+   
 
 @bot.message_handler(commands=['люблю'])
 def love(message):
-   print(message)
+   print(message.from_user.id)
+   print(message.from_user.first_name)
+   print(message.from_user.last_name)
+   print(message.from_user.username)
+   print(message.text)
    bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
    for i in range(10):
     bot.send_message(message.chat.id, '❤️')
 
    bot.send_message(message.chat.id, 'Секретая команда для моей любимой Ани❤️')
-   print(message.from_user.id)
-   print(message.from_user.first_name)
-   print(message.from_user.last_name)
-   print(message.from_user.username)
-   print(message.text)
 
 @bot.message_handler(commands=['w'])
 def weather(message):
