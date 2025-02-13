@@ -25,7 +25,11 @@ def start(message):
 @bot.message_handler(commands=['porno'])
 def porno(message):
    bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
-   print(message)
+   print(message.from_user.id)
+   print(message.from_user.first_name)
+   print(message.from_user.last_name)
+   print(message.from_user.username)
+   print(message.text)
 
 @bot.message_handler(commands=['люблю'])
 def love(message):
@@ -34,12 +38,21 @@ def love(message):
     bot.send_message(message.chat.id, '❤️')
 
    bot.send_message(message.chat.id, 'Секретая команда для моей любимой Ани❤️')
-
+   print(message.from_user.id)
+   print(message.from_user.first_name)
+   print(message.from_user.last_name)
+   print(message.from_user.username)
+   print(message.text)
 
 @bot.message_handler(commands=['w'])
 def weather(message):
     city = message.text.strip().lower()
     res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')
+    print(message.from_user.id)
+    print(message.from_user.first_name)
+    print(message.from_user.last_name)
+    print(message.from_user.username)
+    print(message.text)
     print(city)
     if res.status_code == 200:
      data = json.loads(res.text)
@@ -57,5 +70,11 @@ def weather(message):
 @bot.message_handler(commands=['stop'])
 def stop():
     sys.exit(0)
+    print(message.from_user.id)
+    print(message.from_user.first_name)
+    print(message.from_user.last_name)
+    print(message.from_user.username)
+    print(message.text)
+    print(city)
 
 bot.polling(non_stop=True)
