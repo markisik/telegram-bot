@@ -20,7 +20,7 @@ def start(message):
     print(message.from_user.first_name)
     print(message.from_user.last_name)
     print(message.from_user.username)
-    print(message.chat.text)
+    print(message.sender_chat.text)
 
 @bot.message_handler(commands=['porno'])
 def porno(message):
