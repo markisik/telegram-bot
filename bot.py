@@ -15,24 +15,21 @@ def extract_arg(arg):
 @bot.message_handler(commands=['start'])
 def start(message):
     start = message
-    print(start)
-    bot.send_message(message.chat.id, 'Привет, рад тебя видеть!')
+    bot.send_message(message.chat.id, 'Пошла нахер дура ёбанная!')
 
 @bot.message_handler(commands=['porno'])
 def porno(message):
    porno = message
-   print(porno)
-   bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
+   bot.send_message(message.chat.id, 'Пошла нахер дура ёбанная')
 
 @bot.message_handler(commands=['люблю'])
 def love(message):
    love = message
-   print(love)
-   bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
+   bot.send_message(message.chat.id, 'Пошла нахер дура ёбанная')
    for i in range(10):
-    bot.send_message(message.chat.id, '❤️')
+    bot.send_message(message.chat.id, 'Пошла нахер дура ёбанная')
 
-   bot.send_message(message.chat.id, 'Секретая команда для моей любимой Светы❤️')
+   bot.send_message(message.chat.id, 'Пошла нахер дура ёбанная')
 
 
 @bot.message_handler(commands=['w'])
