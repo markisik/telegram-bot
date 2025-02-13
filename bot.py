@@ -14,6 +14,7 @@ def extract_arg(arg):
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    print(message)
     bot.send_message(message.chat.id, 'Привет, рад тебя видеть!')
     bot.send_message(message.chat.id, 'Вот что я могу:' "\n" + '/porno' + "\n" + '/w - погода')
     print(message.from_user.id)
@@ -24,6 +25,7 @@ def start(message):
 
 @bot.message_handler(commands=['porno'])
 def porno(message):
+   print(message)
    bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
    print(message.from_user.id)
    print(message.from_user.first_name)
@@ -33,6 +35,7 @@ def porno(message):
 
 @bot.message_handler(commands=['люблю'])
 def love(message):
+   print(message)
    bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
    for i in range(10):
     bot.send_message(message.chat.id, '❤️')
@@ -46,13 +49,17 @@ def love(message):
 
 @bot.message_handler(commands=['w'])
 def weather(message):
-    city = message.text.strip().lower()
-    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')
     print(message.from_user.id)
     print(message.from_user.first_name)
     print(message.from_user.last_name)
     print(message.from_user.username)
     print(message.text)
+    city = message.text
+    city = city.replace("/", "", 1)
+    city = city.replace("w", "", 1)
+    city = city.replace(" ", "", 1)
+    print(city)
+    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')
     if res.status_code == 200:
      data = json.loads(res.text)
      temp = data["main"]["temp"]
@@ -60,20 +67,20 @@ def weather(message):
      windstorona = data["wind"]["deg"]
      tempmin = data["main"]["temp_min"]
      tempmax = data["main"]["temp_max"]
-     bot.reply_to(message, f'Cейчас температура: {temp}' + "\n" + f'Минимальная температура: {tempmin}' + "\n" + f'Максимальная температура: {tempmax}' + "\n" + f'Скорость ветра: {wind}м\с' + "\n" + f'Направление ветра: {windstorona}')
+     bot.reply_to(message, f'Cейчас температура: {temp}°C' + "\n" + f'Минимальная температура: {tempmin}°C' + "\n" + f'Максимальная температура: {tempmax}°C' + "\n" + f'Скорость ветра: {wind}м\с' + "\n" + f'Направление ветра: {windstorona}°')
      #image = 'sun.png' if temp > 5.0 else 'sunny.png'
      #file = open('./picters/' + image, 'rb')
      #bot.send_photo(message.chat.id, file)
     else:    bot.reply_to(message, f'Город указан не верно, не забудьте написать команду с городом')
 
 @bot.message_handler(commands=['stop'])
-def stop():
-    sys.exit(0)
+def stop(message):
     print(message.from_user.id)
     print(message.from_user.first_name)
     print(message.from_user.last_name)
     print(message.from_user.username)
     print(message.text)
-    print(city)
+    sys.exit(0)
+    
 
 bot.polling(non_stop=True)
