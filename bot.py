@@ -57,7 +57,7 @@ def weather(message):
      #file = open('./picters/' + image, 'rb')
      #bot.send_photo(message.chat.id, file)
     else:    bot.reply_to(message, f'Город указан не верно, не забудьте написать команду с городом!')
-   except Exception:
+   except ConnectionError:
     print(f"Ошибка связанная с погодой {now}")
 
 @bot.message_handler(commands=['stop'])
