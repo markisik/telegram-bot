@@ -16,20 +16,20 @@ def extract_arg(arg):
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now}')
+    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
     bot.send_message(message.chat.id, 'Привет, рад тебя видеть!')
     bot.send_message(message.chat.id, 'Вот что я могу:' + "\n" + '/w - погода')
     
 
 @bot.message_handler(commands=['porno'])
 def porno(message):
-   print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now}')
+   print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
    bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
    
 
 @bot.message_handler(commands=['люблю'])
 def love(message):
-   print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now}')
+   print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
    bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
    for i in range(10):
     bot.send_message(message.chat.id, '❤️')
@@ -39,7 +39,7 @@ def love(message):
 @bot.message_handler(commands=['w'])
 def weather(message):
    try:
-    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now}')
+    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
     city = message.text
     city = city.replace("/", "", 1)
     city = city.replace("w", "", 1)
@@ -62,7 +62,7 @@ def weather(message):
 
 @bot.message_handler(commands=['stop'])
 def stop(message):
-    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now}')
+    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
     SystemExit.exit(0)
 
 
