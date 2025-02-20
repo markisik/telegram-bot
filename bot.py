@@ -9,7 +9,7 @@ API = '8a754a26e67c3b0effe5f7e22853f89c'
 
 bot = telebot.TeleBot(token)
 
-now = datetime.datetime.now("%Y-%m-%d %H:%M:%S")
+now = datetime.datetime.now()
 
 def extract_arg(arg):
     return arg.split()[1:]
