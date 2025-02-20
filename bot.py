@@ -2,7 +2,6 @@ import telebot
 import requests
 import json
 import datetime
-import pytz
  
 token = '7107794543:AAGoqTAZZcT1ZuMdTMk6gw-8J5-7WRSZ7uU'
 
@@ -10,8 +9,7 @@ API = '8a754a26e67c3b0effe5f7e22853f89c'
 
 bot = telebot.TeleBot(token)
 
-tz_nairobi = pytz.timezone("Etc/GMT+2")
-now = datetime.datetime.now(tz_nairobi)
+now = datetime.datetime.now("%Y-%m-%d %H:%M:%S")
 
 def extract_arg(arg):
     return arg.split()[1:]
