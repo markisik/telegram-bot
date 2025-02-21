@@ -11,13 +11,6 @@ bot = telebot.TeleBot(token)
 
 now = datetime.datetime.now()
 
-if __name__ == '__main__':
-    while True:
-        try:
-            bot.polling(none_stop=True, interval=0)
-        except Exception as e: 
-            print('!!!!!!!Ошибка, продолжение работы!!!!!!!')
-
 def extract_arg(arg):
     return arg.split()[1:]
 
@@ -75,3 +68,10 @@ def stop(message):
 @bot.message_handler(content_types=['text'])
 def text(message):
     bot.send_message(message.chat.id, 'Если честно, я не понял что ты сказал')
+    
+if __name__ == '__main__':
+    while True:
+        try:
+            bot.polling(none_stop=True, interval=0)
+        except Exception as e: 
+            print('!!!!!!!Ошибка, продолжение работы!!!!!!!')
