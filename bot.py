@@ -67,6 +67,7 @@ def stop(message):
 
 @bot.message_handler(content_types=['text'])
 def text(message):
+    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
     bot.send_message(message.chat.id, 'Если честно, я не понял что ты сказал')
     
 if __name__ == '__main__':
