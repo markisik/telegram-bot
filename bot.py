@@ -7,15 +7,14 @@ token = '7107794543:AAGoqTAZZcT1ZuMdTMk6gw-8J5-7WRSZ7uU'
 
 API = '8a754a26e67c3b0effe5f7e22853f89c'
 
-bot = telebot.TeleBot(token)
-
-now = datetime.datetime.now()
+bot = telebot.TeleBot(token)
 
 def extract_arg(arg):
     return arg.split()[1:]
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    now = datetime.datetime.now()
     print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
     bot.send_message(message.chat.id, 'Привет, рад тебя видеть!')
     bot.send_message(message.chat.id, 'Вот что я могу:' + "\n" + '/w - погода')
@@ -23,12 +22,14 @@ def start(message):
 
 @bot.message_handler(commands=['porno'])
 def porno(message):
+   now = datetime.datetime.now()
    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
    bot.send_message(message.chat.id, 'А ВОТ НЕТУ ТУТ ПОРНУХИ')
    
 
 @bot.message_handler(commands=['люблю'])
 def love(message):
+   now = datetime.datetime.now()
    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
    bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
    for i in range(10):
@@ -38,7 +39,7 @@ def love(message):
 
 @bot.message_handler(commands=['w'])
 def weather(message):
-   try:
+    now = datetime.datetime.now()
     print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
     city = message.text
     city = city.replace("/", "", 1)
@@ -57,16 +58,16 @@ def weather(message):
      #file = open('./picters/' + image, 'rb')
      #bot.send_photo(message.chat.id, file)
     else:    bot.reply_to(message, f'Город указан не верно, не забудьте написать команду с городом!')
-   except ConnectionError:
-    print(f"Ошибка связанная с погодой {now}")
 
 @bot.message_handler(commands=['stop'])
 def stop(message):
+    now = datetime.datetime.now()
     print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
     SystemExit.exit(0)
 
 @bot.message_handler(content_types=['text'])
 def text(message):
+    now = datetime.datetime.now()
     print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
     bot.send_message(message.chat.id, 'Если честно, я не понял что ты сказал')
     
@@ -74,5 +75,6 @@ if __name__ == '__main__':
     while True:
         try:
             bot.polling(none_stop=True, interval=0)
-        except Exception as e: 
-            print('!!!!!!!Ошибка, продолжение работы!!!!!!!')
+        except Exception as e:
+            now = datetime.datetime.now()
+            print('!---Ошибка в {now}, продолжение работы---!')
