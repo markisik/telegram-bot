@@ -77,4 +77,4 @@ if __name__ == '__main__':
             bot.polling(none_stop=True, interval=0)
         except Exception as e:
             now = datetime.datetime.now()
-            print('!---Ошибка в {now}, продолжение работы---!')
+            print(f'!---Ошибка в {now}, продолжение работы---!')
