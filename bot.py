@@ -31,11 +31,8 @@ def porno(message):
 def love(message):
    now = datetime.datetime.now()
    print(f'ID user: {message.from_user.id} \nName user: {message.from_user.first_name} {message.from_user.last_name} \nNickname user: {message.from_user.username} \nCommand user: {message.text} \n{now} \n------------')
-   bot.send_message(message.chat.id, 'Дарую тебе мою любовь')
-   for i in range(10):
-    bot.send_message(message.chat.id, '❤️')
 
-   bot.send_message(message.chat.id, 'Секретая команда для моей любимой Ани❤️')
+   bot.send_message(message.chat.id, 'пусто')
 
 @bot.message_handler(commands=['w'])
 def weather(message):
