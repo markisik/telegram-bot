@@ -5,7 +5,7 @@ import datetime
  
 token = '7107794543:AAGoqTAZZcT1ZuMdTMk6gw-8J5-7WRSZ7uU'
 
-API = '8a754a26e67c3b0effe5f7e22853f89c'
+API = ''
 
 bot = telebot.TeleBot(token)
 
